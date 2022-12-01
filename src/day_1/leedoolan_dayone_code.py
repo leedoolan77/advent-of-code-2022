@@ -22,6 +22,7 @@ def read_file_into_var(path, read_as_string=True, encoding="utf-8"):
 
     return txt
 
+
 ########## main ##########
 # get input data
 input_data_path = f"{os.path.dirname(os.path.realpath(__file__))}/input.txt"
@@ -39,6 +40,6 @@ totals = sorted(totals, reverse=True)
 print(f"Max Total is: {sum(x for x in [totals[0]])}")
 
 # PART 2
-print(f"Max Total of top 3: {sum(x for x in totals[0:3])}")
+print(f"Total of top 3: {sum(x for x in totals[0:3])}")
 
 ########## complete ##########
