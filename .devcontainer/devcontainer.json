@@ -1,0 +1,32 @@
+{
+	"name": "advent-of-code-2022",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"runArgs": [ "--name=advent-of-code-2022" ],
+	"settings": {
+        "python.pythonPath": "/usr/bin/python3"
+    },
+	"remoteEnv": {
+		"PYTHONPATH": "${containerEnv:PYTHONPATH}:${containerWorkspaceFolder}/src"
+	},
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"davidanson.vscode-markdownlint",
+		"redhat.vscode-yaml",
+		"ms-azuretools.vscode-docker",
+		// "googlecloudtools.cloudcode",
+		"ms-vscode-remote.remote-containers"
+	],
+	"postCreateCommand": "bash ${containerWorkspaceFolder}/.devcontainer/postCreateCommand.sh",
+	"remoteUser": "vscode",
+	"features": {
+		// "terraform": "latest",
+		"git": "latest",
+		"docker-from-docker": {
+			"version": "latest",
+			"moby": true
+		}
+	}
+}

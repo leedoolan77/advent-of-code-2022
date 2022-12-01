@@ -1,0 +1,37 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "advent-of-code-2022"
+version = "0.1.0"
+description = "Python package build from cookiecutter"
+authors = ["CTS"]
+license = "MIT"
+
+[tool.poetry.scripts]
+"advent-of-code-2022" = "advent-of-code-2022:main"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+
+[tool.poetry.dev-dependencies]
+black = "^21.6b0"
+autopep8 = "^1.5.7"
+pytest = "^6.2.4"
+coverage = {extras = ["toml"], version = "^5.5"}
+pytest-cov = "^2.12.1"
+ipykernel = "^6.15.1"
+
+[tool.black]
+line-length = 80
+
+[tool.coverage.paths]
+source = ["advent-of-code-2022"]
+
+[tool.coverage.run]
+branch = true
+source = ["advent-of-code-2022"]
+
+[tool.coverage.report]
+show_missing = true
