@@ -7,7 +7,7 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
-      # - id: check-yaml - commented out as jinja in AssetLib fails tests - maybe add yamllint at some point
+      - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
       - id: check-docstring-first

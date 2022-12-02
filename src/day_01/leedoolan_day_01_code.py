@@ -3,37 +3,26 @@
 
 ########## global imports ##########
 import os
+from mylib.general import read_file_into_var
 
 ########## global vars ##########
+input_file_name = "input.txt"
+input_file_path = (
+    f"{os.path.dirname(os.path.realpath(__file__))}/{input_file_name}"
+)
 
 ########## classes & functions ##########
-def read_file_into_var(path, read_as_string=True, encoding="utf-8"):
-    """
-    This reads a given file into a variable.
-    :param path string e.g. "/folder1/file"
-    :return string
-    """
-    txt = ""
-    try:
-        with open(path, "r", encoding=encoding) as file:
-            txt = file.read()
-    except Exception as e:
-        print(e)
-
-    return txt
-
 
 ########## main ##########
 # get input data
-input_data_path = f"{os.path.dirname(os.path.realpath(__file__))}/input.txt"
-input_data = read_file_into_var(input_data_path)
+input_data = read_file_into_var(input_file_path)
 
 # parse input data
 groups_data_raw = input_data.split("\n\n")
 groups_data_clean = [x.split("\n") for x in groups_data_raw]
 
 # find totals per group, and reverse sort
-totals = [sum(int(y) for y in x) for x in groups_data_clean]
+totals = [sum(int(y) for y in x if y != "") for x in groups_data_clean]
 totals = sorted(totals, reverse=True)
 
 # PART 1

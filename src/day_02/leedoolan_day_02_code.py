@@ -3,20 +3,18 @@
 
 ########## global imports ##########
 import os
+from mylib.general import read_file_into_var
 
 ########## global vars ##########
-shape_lk = {"A": "R", "B": "P", "C": "S", "X": "R", "Y": "P", "Z": "S"}
+input_file_name = "input.txt"
+input_file_path = (
+    f"{os.path.dirname(os.path.realpath(__file__))}/{input_file_name}"
+)
 
+shape_lk = {"A": "R", "B": "P", "C": "S", "X": "R", "Y": "P", "Z": "S"}
 shape_score_lk = {"R": 1, "P": 2, "S": 3}
 
 ########## classes & functions ##########
-def read_file_into_var(path, read_as_string=True, encoding="utf-8"):
-    txt = ""
-    with open(path, "r", encoding=encoding) as file:
-        txt = file.read()
-    return txt
-
-
 def get_outcome_score(opp, you):
     # draw
     if opp == you:
@@ -81,9 +79,7 @@ def get_total_score(part, rounds):
 
 ########## main ##########
 # get & parse input data
-input_data_path = f"{os.path.dirname(os.path.realpath(__file__))}/input.txt"
-input_data = read_file_into_var(input_data_path)
-rounds = input_data.split("\n")
+rounds = read_file_into_var(input_file_path).splitlines()
 
 # parts
 get_total_score(1, rounds)
