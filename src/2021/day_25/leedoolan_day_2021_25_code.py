@@ -6,7 +6,7 @@ import os
 from mylib.general import read_file_into_var
 
 ########## global vars ##########
-input_file_name = "input.txt"
+input_file_name = "input_example.txt"
 input_file_path = (
     f"{os.path.dirname(os.path.realpath(__file__))}/{input_file_name}"
 )
@@ -33,11 +33,20 @@ class Grid:
                 "".join([self.grid[y][x].contents for x in range(self.x_size)])
             )
 
+    def move_both_herds_to_stand_still(self):
+        self.move_both_herd_attempts = 0
+        while g.move_both_herds():
+            pass
+
     def move_both_herds(self):
+        self.move_both_herd_attempts += 1
         moves_done = 0
         for herd in [">", "v"]:
             moves_done += self.move_herd(herd)
-        return True if moves_done > 0 else False
+        if moves_done > 0:
+            return True
+        else:
+            return False
 
     def move_herd(self, herd: str):
         moves_done = 0
@@ -94,14 +103,8 @@ starting_contents = read_file_into_var(input_file_path)
 # set up grid
 g = Grid(starting_contents)
 
-# run through moves
-i = 0
-while True:
-    i += 1
-    r = g.move_both_herds()
-    if not r:
-        break
-
-print(f"No of turns before cannot go: {i}")
+# PART 1
+g.move_both_herds_to_stand_still()
+print(f"No of turns before cannot go: {g.move_both_herd_attempts}")
 
 ########## complete ##########
