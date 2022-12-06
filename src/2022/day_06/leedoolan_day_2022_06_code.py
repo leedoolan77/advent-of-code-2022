@@ -14,13 +14,13 @@ input_file_path = (
 )
 
 ########## classes & functions ##########
-def parseraw_dataata(input_file_path):
+def parse_raw_data(input_file_path):
     raw_data = read_file_into_var(input_file_path).splitlines()
     return raw_data
 
 
 def solve(input_file_path, marker_count):
-    raw_data = parseraw_dataata(input_file_path)
+    raw_data = parse_raw_data(input_file_path)
 
     word_start = []
     for l in raw_data:
