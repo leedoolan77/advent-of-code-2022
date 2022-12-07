@@ -3,6 +3,7 @@
 
 ########## global imports ##########
 import threading
+import os
 
 ########## global vars ##########
 
@@ -21,6 +22,10 @@ def read_file_into_var(path, read_as_string=True, encoding="utf-8"):
         print(e)
 
     return txt
+
+
+def get_file_path(file):
+    return f"{os.path.dirname(os.path.realpath(file))}"
 
 
 def process_items(
