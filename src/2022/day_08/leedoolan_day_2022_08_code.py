@@ -115,23 +115,7 @@ def get_tree_scenic_score(g, x, y):
             if g.grid[x][n] >= tr:
                 break
 
-    scenic_score = l * r * t * b
-    if testing:
-        print(
-            x,
-            y,
-            tr,
-            scenic_score,
-            l,
-            r,
-            t,
-            b,
-            xs[0:x][::-1],
-            xs[x + 1 :],
-            ys[0:y][::-1],
-            ys[y + 1 :],
-        )
-    return scenic_score
+    return l * r * t * b
 
 
 ########## main ##########
