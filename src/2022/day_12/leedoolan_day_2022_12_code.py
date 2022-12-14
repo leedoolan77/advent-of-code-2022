@@ -85,11 +85,11 @@ def solve(input_file_data):
 
     len_paths = []
     for a in g.find_chars("a"):
-        # bug here, dont know why but get right answer????
+        # catch non solutions, not very elegant!
         try:
             len_paths.append(len(g.do_breadth_first_search(a, g.end)))
         except:
-            print(a)
+            pass
     part_two = min(len_paths)
 
     return (part_one, part_two)
